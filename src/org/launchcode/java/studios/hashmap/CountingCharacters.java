@@ -6,18 +6,24 @@ import java.util.HashMap;
 public class CountingCharacters {
     public static void main(String[] args){
         String quote = "If the product of two terms is zero then common sense says at least one of the two terms has to be zero to start with. So if you move all the terms over to one side, you can put the quadratics into a form that can be factored allowing that side of the equation to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
-        char[] charactersInString = quote.toCharArray();
-        Map<String, Integer> numOfEachCharacter = new HashMap<>();
+        char[] charactersInString = quote.toLowerCase().toCharArray();
 
+        Map<Character, Integer> numOfEachCharacter = new HashMap<>();
 
         for(char character:charactersInString){
-            if(!numOfEachCharacter.containsKey(charactersInString[i])){
-                numOfEachCharacter.entrySet();
+            if(!numOfEachCharacter.containsKey(character)){
+                numOfEachCharacter.put(character, 1);
+            } else {
+                Integer numOfCharacter = numOfEachCharacter.get(character)+1;
+                numOfEachCharacter.put(character,numOfCharacter);
             }
+        }
+        String displayNumOfEachCharacter="";
+        for(Map.Entry<Character, Integer> characterAndValue : numOfEachCharacter.entrySet()){
+            displayNumOfEachCharacter += characterAndValue.getKey()+": " + characterAndValue.getValue()+"\n";
         }
 
 
-
-        System.out.println(charactersInString[1]);
+        System.out.println(displayNumOfEachCharacter);
     }
 }
