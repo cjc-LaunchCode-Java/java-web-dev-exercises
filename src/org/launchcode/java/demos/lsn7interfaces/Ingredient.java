@@ -41,6 +41,15 @@ public abstract class Ingredient {
     public String toString() {
         return "Name: " + name + "\n" +
                 "Cost: $" + cost + "\n" +
-                "Allergens: " + allergens + "\n";
+                "Allergens: " + this.toStringAllergens() + "\n";
+    }
+
+    public String toStringAllergens() {
+        String allergensString = "";
+        for(String allergen: allergens){
+            allergensString += ", " + allergen;
+        }
+        return allergensString.replaceFirst(", ", "");
+
     }
 }
